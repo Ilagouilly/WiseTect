@@ -19,5 +19,5 @@ if %errorlevel% neq 0 (
 echo SonarQube is up and running
 
 :: Run the analysis - PLEASE MAKE SURE TO SET SONAR_TOKEN in .env VARIABLE
-cd user-service
+cd architecture-service
 mvn clean verify sonar:sonar -Dsonar.login=%SONAR_TOKEN% -Dsonar.host.url=http://localhost:9000

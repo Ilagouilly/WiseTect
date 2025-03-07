@@ -1,11 +1,11 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  user-service:
+  architecture-service:
     build:
-      context: .  # Changed to root project directory
-      dockerfile: Dockerfile  # Explicitly specify the root Dockerfile
-    image: wisetect-user-service
+      context: . # Changed to root project directory
+      dockerfile: Dockerfile # Explicitly specify the root Dockerfile
+    image: wisetect-architecture-service
     ports:
       - "8080:8080"
     environment:

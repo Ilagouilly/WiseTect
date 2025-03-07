@@ -22,5 +22,5 @@ done
 echo "SonarQube is up and running"
 
 # Run the analysis - Make sure SONAR_TOKEN is set in .env
-cd user-service || exit
+cd architecture-service || exit
 mvn clean verify sonar:sonar -Dsonar.login="$SONAR_TOKEN" -Dsonar.host.url=http://localhost:9000

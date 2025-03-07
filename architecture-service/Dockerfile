@@ -7,14 +7,15 @@ RUN apk add --no-cache maven
 # Set working directory
 WORKDIR /app
 
-# Copy entire project
-COPY . .
+# Copy project files
+COPY pom.xml .
+COPY src ./src
 
-# Build the entire project
+# Build the application
 RUN mvn clean package -DskipTests
 
 # Expose port
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "/app/architecture-service/target/architecture-service-1.0.0-SNAPSHOT-exec.jar"]
+ENTRYPOINT ["java", "-jar", "/app/target/architecture-service-1.0.0-SNAPSHOT-exec.jar"]

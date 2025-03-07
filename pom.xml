@@ -12,7 +12,7 @@
 
     <groupId>com.wisetect</groupId>
     <artifactId>wisetect-backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>WiseTect Backend</name>
@@ -36,7 +36,7 @@
     </properties>
 
     <modules>
-        <module>user-service</module>
+        <module>architecture-service</module>
         <!-- Add other modules as they are created -->
     </modules>
 
@@ -135,7 +135,7 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
-                        <mainClass>com.wisetect.userservice.UserServiceApplication</mainClass>
+                        <mainClass>com.wisetect.architectureservice.ArchitectureServiceApplication</mainClass>
                         <classifier>exec</classifier>
                     </configuration>
                     <executions>

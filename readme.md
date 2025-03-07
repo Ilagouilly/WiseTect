@@ -4,7 +4,7 @@
 
 WiseTect is an interactive architecture assistant that helps users design the architecture for their applications. By leveraging AI-powered recommendations, WiseTect streamlines the process of software architecture design, balancing scalability, maintainability, and complexity trade-offs.
 
-![version](https://img.shields.io/badge/version-0.0.1-blue) ![Build Status](https://img.shields.io/github/actions/workflow/status/ilagouilly/EventLinkr-Java-Backend/.github/workflows/user-service-ci.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Ilagouilly_EventLinkr-Java-Backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Ilagouilly_EventLinkr-Java-Backend) [![CodeFactor](https://www.codefactor.io/repository/github/ilagouilly/eventlinkr-java-backend/badge/main)](https://www.codefactor.io/repository/github/ilagouilly/eventlinkr-java-backend/overview/main) ![Coverage](https://codecov.io/gh/ilagouilly/EventLinkr-Java-Backend/branch/main/graph/badge.svg) ![Issues](https://img.shields.io/github/issues/ilagouilly/EventLinkr-Java-Backend) ![Pull Requests](https://img.shields.io/github/issues-pr/ilagouilly/EventLinkr-Java-Backend) <a href="https://sonarcloud.io/summary/new_code?id=Ilagouilly_EventLinkr-Java-Backend">
+![version](https://img.shields.io/badge/version-1.0.0-blue) ![Build Status](https://img.shields.io/github/actions/workflow/status/ilagouilly/EventLinkr-Java-Backend/.github/workflows/architecture-service-ci.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Ilagouilly_EventLinkr-Java-Backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Ilagouilly_EventLinkr-Java-Backend) [![CodeFactor](https://www.codefactor.io/repository/github/ilagouilly/eventlinkr-java-backend/badge/main)](https://www.codefactor.io/repository/github/ilagouilly/eventlinkr-java-backend/overview/main) ![Coverage](https://codecov.io/gh/ilagouilly/EventLinkr-Java-Backend/branch/main/graph/badge.svg) ![Issues](https://img.shields.io/github/issues/ilagouilly/EventLinkr-Java-Backend) ![Pull Requests](https://img.shields.io/github/issues-pr/ilagouilly/EventLinkr-Java-Backend) <a href="https://sonarcloud.io/summary/new_code?id=Ilagouilly_EventLinkr-Java-Backend">
 <img src="https://sonarcloud.io/images/project_badges/sonarcloud-light.svg" width="90">
 </a>
 
@@ -51,6 +51,7 @@ WiseTect is an interactive architecture assistant that helps users design the ar
 - Java 21 JDK
   git clone https://github.com/ilagouilly/WiseTect.git
   cd WiseTect
+
   ```
 
   ```
