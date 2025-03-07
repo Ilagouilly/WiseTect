@@ -1,8 +1,8 @@
-# EventLinkr: Revolutionizing Event Networking
+# WiseTect: The Intelligent Software Architecture Assistant
 
 ## 🌟 Project Overview
 
-EventLinkr is an innovative event management platform designed to transform networking experiences by leveraging cutting-edge technology and intelligent connection recommendations.
+WiseTect is an interactive architecture assistant that helps users design the architecture for their applications. By leveraging AI-powered recommendations, WiseTect streamlines the process of software architecture design, balancing scalability, maintainability, and complexity trade-offs.
 
 ![version](https://img.shields.io/badge/version-0.0.1-blue) ![Build Status](https://img.shields.io/github/actions/workflow/status/ilagouilly/EventLinkr-Java-Backend/.github/workflows/user-service-ci.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Ilagouilly_EventLinkr-Java-Backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Ilagouilly_EventLinkr-Java-Backend) [![CodeFactor](https://www.codefactor.io/repository/github/ilagouilly/eventlinkr-java-backend/badge/main)](https://www.codefactor.io/repository/github/ilagouilly/eventlinkr-java-backend/overview/main) ![Coverage](https://codecov.io/gh/ilagouilly/EventLinkr-Java-Backend/branch/main/graph/badge.svg) ![Issues](https://img.shields.io/github/issues/ilagouilly/EventLinkr-Java-Backend) ![Pull Requests](https://img.shields.io/github/issues-pr/ilagouilly/EventLinkr-Java-Backend) <a href="https://sonarcloud.io/summary/new_code?id=Ilagouilly_EventLinkr-Java-Backend">
   <img src="https://sonarcloud.io/images/project_badges/sonarcloud-light.svg" width="90">
@@ -43,10 +43,8 @@ EventLinkr is an innovative event management platform designed to transform netw
 
 | Service              | Responsibility                   |
 | -------------------- | -------------------------------- |
-| User Service         | Authentication & User Management |
-| Event Service        | Event Creation & Management      |
-| Notification Service | Communication & Alerts           |
-| Auth Service         | Security & Access Control        |
+| TBD        | TBD |
+
 
 ## 🚀 Getting Started
 
@@ -61,8 +59,8 @@ EventLinkr is an innovative event management platform designed to transform netw
 1. Clone the repository
 
    ```bash
-   git clone https://github.com/ilagouilly/EventLinkr-Java-Backend.git
-   cd EventLinkr-Java-Backend
+   git clone https://github.com/ilagouilly/WiseTect.git
+   cd WiseTect
    ```
 
 2. Build the project
