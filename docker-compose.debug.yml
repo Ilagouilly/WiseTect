@@ -3,6 +3,7 @@ version: '3.4'
 services:
   wisetectbackend:
     image: wisetectbackend
+
     build:
       context: .
       dockerfile: ./Dockerfile

@@ -49,17 +49,11 @@ WiseTect is an interactive architecture assistant that helps users design the ar
 ### Prerequisites
 
 - Java 21 JDK
-- Docker
-- Docker Compose
+  git clone https://github.com/ilagouilly/WiseTect.git
+  cd WiseTect
+  ```
 
-### Local Development Setup
-
-1. Clone the repository
-
-   ```bash
-   git clone https://github.com/ilagouilly/WiseTect.git
-   cd WiseTect
-   ```
+  ```
 
 2. Build the project
 
