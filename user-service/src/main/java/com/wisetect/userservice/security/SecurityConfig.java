@@ -1,4 +1,4 @@
-package com.wisetect.userservice.security; // Or com.wisetect.userservice.security
+package com.wisetect.userservice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
