@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.eventlinkr</groupId>
-        <artifactId>eventlinkr-backend</artifactId>
+        <groupId>com.wisetect</groupId>
+        <artifactId>wisetect-backend</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>./../pom.xml</relativePath>
     </parent>
@@ -19,7 +19,7 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.version>1.18.30</lombok.version>
         <java.version>21</java.version>
-        <start-class>com.eventlinkr.userservice.UserServiceApplication</start-class>
+        <start-class>com.wisetect.userservice.UserServiceApplication</start-class>
     </properties>
 
     <dependencies>
@@ -178,10 +178,10 @@
                 <configuration>
                     <mainClass>${start-class}</mainClass>
                     <targetClasses>
-                        <param>com.eventlinkr.userservice.*</param>
+                        <param>com.wisetect.userservice.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>com.eventlinkr.userservice.*Test</param>
+                        <param>com.wisetect.userservice.*Test</param>
                     </targetTests>
                 </configuration>
             </plugin>

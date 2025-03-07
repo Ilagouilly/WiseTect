@@ -7,13 +7,13 @@ spring:
 
   # H2 Database Configuration
   datasource:
-    url: jdbc:h2:mem:eventlinkr
+    url: jdbc:h2:mem:wisetect
     driverClassName: org.h2.Driver
     username: sa
     password:
 
   r2dbc:
-    url: r2dbc:h2:mem:///eventlinkr?options=DB_CLOSE_DELAY=-1
+    url: r2dbc:h2:mem:///wisetect?options=DB_CLOSE_DELAY=-1
     username: sa
     password:
 
@@ -22,7 +22,7 @@ spring:
       enabled: true
 
   flyway:
-    url: jdbc:h2:mem:eventlinkr
+    url: jdbc:h2:mem:wisetect
     user: sa
     password:
     locations:
@@ -33,7 +33,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://your-keycloak-server/realms/eventlinkr
+          issuer-uri: https://your-keycloak-server/realms/wisetect
   server:
   port: 8080
 

@@ -10,13 +10,13 @@
         <relativePath />
     </parent>
 
-    <groupId>com.eventlinkr</groupId>
-    <artifactId>eventlinkr-backend</artifactId>
+    <groupId>com.wisetect</groupId>
+    <artifactId>wisetect-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>EventLinkr Backend</name>
-    <description>Microservices backend for EventLinkr platform</description>
+    <name>WiseTect Backend</name>
+    <description>Microservices backend for WiseTect platform</description>
 
     <properties>
         <java.version>21</java.version>
@@ -30,8 +30,8 @@
         <flyway.version>9.22.3</flyway.version>
         <junit.jupiter.version>5.10.0</junit.jupiter.version>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
-        <sonar.projectKey>eventlinkr</sonar.projectKey>
-        <sonar.projectName>EventLinkr</sonar.projectName>
+        <sonar.projectKey>wisetect</sonar.projectKey>
+        <sonar.projectName>WiseTect</sonar.projectName>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
@@ -135,7 +135,7 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
-                        <mainClass>com.eventlinkr.userservice.UserServiceApplication</mainClass>
+                        <mainClass>com.wisetect.userservice.UserServiceApplication</mainClass>
                         <classifier>exec</classifier>
                     </configuration>
                     <executions>

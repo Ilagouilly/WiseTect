@@ -1,4 +1,4 @@
-name: EventLinkr CI/CD
+name: WiseTect CI/CD
 
 on:
   push:
@@ -43,14 +43,14 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: Ilagouilly/EventLinkr-Java-Backend
+          slug: Ilagouilly/WiseTect
 
       - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd user-service
-          mvn sonar:sonar -Dsonar.projectKey=Ilagouilly_EventLinkr-Java-Backend \
+          mvn sonar:sonar -Dsonar.projectKey=Ilagouilly_WiseTect \
                           -Dsonar.organization=ilagouilly \
                           -Dsonar.host.url=https://sonarcloud.io \
                           -Dsonar.login=$SONAR_TOKEN

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    
+
     <springProperty scope="context" name="application.name" source="spring.application.name"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -24,7 +24,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.eventlinkr.userservice" level="DEBUG"/>
+    <logger name="com.wisetect.userservice" level="DEBUG"/>
     <logger name="org.springframework.web" level="INFO"/>
     <logger name="org.springframework.security" level="INFO"/>
     <logger name="reactor" level="WARN"/>

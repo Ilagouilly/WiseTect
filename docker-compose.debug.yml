@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  eventlinkrbackend:
-    image: eventlinkrbackend
+  wisetectbackend:
+    image: wisetectbackend
     build:
       context: .
       dockerfile: ./Dockerfile
