@@ -9,7 +9,6 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
-architecture-service\src\main\resources\application.properties
 
 # Gradle
 .gradle
@@ -64,3 +63,4 @@ Thumbs.db
 # Secrets
 secrets.yml
 architecture-service/.jqwik-database
+architecture-service/src/main/resources/application.properties
