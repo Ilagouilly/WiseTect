@@ -10,6 +10,6 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 public class TestContainersConfiguration {
     @Container
     public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:15")
-            .withDatabaseName("testdb").withUsername("test").withPassword("test");
+            .withDatabaseName("testdb").withUsername("sa").withPassword("");
 
 }
