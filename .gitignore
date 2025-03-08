@@ -9,7 +9,7 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
-*\application.properties
+architecture-service\src\main\resources\application.properties
 
 # Gradle
 .gradle
