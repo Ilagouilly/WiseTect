@@ -114,11 +114,6 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <version>7.2</version>
-        </dependency>
 
         <!-- OpenAPI / Swagger -->
         <dependency>

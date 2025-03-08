@@ -63,3 +63,4 @@ Thumbs.db
 # Secrets
 secrets.yml
 architecture-service/.jqwik-database
+architecture-service/src/main/resources/application.properties

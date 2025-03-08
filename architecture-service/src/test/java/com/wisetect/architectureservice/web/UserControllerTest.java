@@ -13,8 +13,6 @@ class UserControllerTest {
     @Mock
     private ArchitectureService architectureService;
 
-    private UserController userController;
-
     @BeforeEach
     void setUp() {
 

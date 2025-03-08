@@ -33,6 +33,7 @@
         <sonar.projectKey>wisetect</sonar.projectKey>
         <sonar.projectName>WiseTect</sonar.projectName>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <slf4j.version>2.0.9</slf4j.version>
     </properties>
 
     <modules>
@@ -125,8 +126,26 @@
                 <scope>test</scope>
                 <type>pom</type>
             </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!-- Add these as direct dependencies to ensure they're available to all modules -->
+    <dependencies>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <pluginManagement>
