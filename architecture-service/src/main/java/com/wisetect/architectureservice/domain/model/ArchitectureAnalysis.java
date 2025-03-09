@@ -14,18 +14,38 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArchitectureAnalysis {
     private String summary;
-    private List<Tradeoff> tradeoffs;
-    private List<String> strengths;
-    private List<String> weaknesses;
+    private List<Strength> strengths;
+    private List<Weakness> weaknesses;
+    private List<Recommendation> recommendations;
     private Map<String, Object> metrics;
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Tradeoff {
-        private String aspect;
-        private String pros;
-        private String cons;
-        private String recommendation;
+    public static class Strength {
+        private String title;
+        private String description;
+        private String impact;
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Weakness {
+        private String title;
+        private String description;
+        private String impact;
+        private String mitigationStrategy;
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Recommendation {
+        private String title;
+        private String description;
+        private String priority;
+        private String effort;
+        private String impact;
     }
 }
