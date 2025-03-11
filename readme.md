@@ -40,9 +40,9 @@ WiseTect is an interactive architecture assistant that helps users design the ar
 
 ## 📦 Microservices
 
-| Service | Responsibility |
-| ------- | -------------- |
-| TBD     | TBD            |
+|                            Service                                  | Responsibility |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+|                       architecture-service                          | Generating intelligent architecture suggestions leveraging AI-powered analysis to optimize design decisions.            |
 
 ## 🚀 Getting Started
 
