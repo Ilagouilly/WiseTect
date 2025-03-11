@@ -48,23 +48,25 @@ WiseTect is an interactive architecture assistant that helps users design the ar
 
 ### Prerequisites
 
-- Java 21 JDK
-  git clone https://github.com/ilagouilly/WiseTect.git
-  cd WiseTect
 
-  ```
-
-  ```
+1. Clone the project
+   ```bash
+   git clone https://github.com/ilagouilly/WiseTect.git
+   ```
 
 2. Build the project
 
    ```bash
-   ./mvnw clean install
+   ./build.sh|bat
    ```
-
-3. Run with Docker Compose
+3. Run Sonar locally
    ```bash
-   docker-compose up --build
+   ./sonar.sh|bat
+   ```
+   
+4. Run with Docker Compose
+   ```bash
+   ./run.sh|bat
    ```
 
 ## 🔒 Security Features
