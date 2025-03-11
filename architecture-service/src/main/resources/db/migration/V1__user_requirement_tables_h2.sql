@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS user_requirements (
     project_name VARCHAR(255),
     project_description TEXT,
     answers JSON,
+    answers_json TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

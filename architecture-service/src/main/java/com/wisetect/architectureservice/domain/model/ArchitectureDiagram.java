@@ -1,6 +1,5 @@
 package com.wisetect.architectureservice.domain.model;
 
-import java.util.List;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArchitectureDiagram {
     private String type;
-    private List<Component> components;
-    private List<Connection> connections;
+    private Map<String, Component> components;
+    private Map<String, Connection> connections;
 
     @Data
     @NoArgsConstructor
@@ -37,6 +36,6 @@ public class ArchitectureDiagram {
         private String target;
         private String type;
         private String description;
-        private Map<String, Object> properties;
+        private Map<String, String> properties;
     }
 }
