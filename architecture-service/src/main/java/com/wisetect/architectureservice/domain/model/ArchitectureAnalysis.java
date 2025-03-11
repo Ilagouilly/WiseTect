@@ -1,6 +1,5 @@
 package com.wisetect.architectureservice.domain.model;
 
-import java.util.List;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -14,9 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArchitectureAnalysis {
     private String summary;
-    private List<Strength> strengths;
-    private List<Weakness> weaknesses;
-    private List<Recommendation> recommendations;
+    private Map<String, Strength> strengths;
+    private Map<String, Weakness> weaknesses;
+    private Map<String, Recommendation> recommendations;
     private Map<String, Object> metrics;
 
     @Data

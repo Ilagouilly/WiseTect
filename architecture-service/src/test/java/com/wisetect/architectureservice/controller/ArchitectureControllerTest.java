@@ -1,25 +1,57 @@
 package com.wisetect.architectureservice.controller;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.web.reactive.server.WebTestClient;
+
+import com.wisetect.architectureservice.domain.dto.ArchitectureSuggestionResponse;
 import com.wisetect.architectureservice.service.ArchitectureService;
 
-@ExtendWith(MockitoExtension.class)
-class ArchitectureControllerTest {
+import reactor.core.publisher.Mono;
 
-    @Mock
+@SpringBootTest
+@AutoConfigureWebTestClient
+@ActiveProfiles("test") // Add test profile for database configuration
+public class ArchitectureControllerTest {
+
+    @Autowired
+    private WebTestClient webTestClient;
+
+    @MockitoBean
     private ArchitectureService architectureService;
 
-    @InjectMocks
-    private ArchitectureController architectureController;
+    private ArchitectureSuggestionResponse testSuggestion;
 
     @BeforeEach
     void setUp() {
-
+        testSuggestion = ArchitectureSuggestionResponse.builder()
+                .id(1L)
+                .requirementId(1L)
+                .build();
     }
 
+    @Test
+    void testGenerateArchitectureSuggestion() {
+        // Mock service to return our test suggestion
+        when(architectureService.generateArchitectureSuggestion(eq(1L))).thenReturn(Mono.just(testSuggestion));
+
+        // Test the endpoint
+        webTestClient.post()
+                .uri("/api/architecture/generate/1")
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.id").isEqualTo(1)
+                .jsonPath("$.requirementId").isEqualTo(1);
+    }
 }

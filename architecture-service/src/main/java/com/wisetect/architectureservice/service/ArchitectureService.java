@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisetect.architectureservice.domain.dto.ArchitectureSuggestionResponse;
 import com.wisetect.architectureservice.domain.dto.ArchitectureUpdateRequest;
@@ -126,6 +127,7 @@ public class ArchitectureService {
                     existingSuggestion.setIsActive(false);
                     return architectureSuggestionRepository.save(existingSuggestion);
                 })
+                .switchIfEmpty(Mono.empty())
                 .then(Mono.defer(() -> {
                     // Get the latest version number
                     return architectureSuggestionRepository.findByRequirementIdOrderByVersionDesc(requirement.getId())
@@ -168,11 +170,23 @@ public class ArchitectureService {
 
         try {
             if (suggestion.getDiagramJson() != null) {
-                diagram = objectMapper.readValue(suggestion.getDiagramJson(), ArchitectureDiagram.class);
+                JsonNode diagramNode = objectMapper.readTree(suggestion.getDiagramJson());
+                if (diagramNode.isTextual()) {
+                    // Handle case where diagram is a stringified JSON object
+                    diagram = objectMapper.readValue(diagramNode.textValue(), ArchitectureDiagram.class);
+                } else {
+                    diagram = objectMapper.treeToValue(diagramNode, ArchitectureDiagram.class);
+                }
             }
 
             if (suggestion.getAnalysisJson() != null) {
-                analysis = objectMapper.readValue(suggestion.getAnalysisJson(), ArchitectureAnalysis.class);
+                System.out.println(" getAnalysisJson: " + suggestion.getAnalysisJson());
+                JsonNode analysisNode = objectMapper.readTree(suggestion.getAnalysisJson());
+                if (analysisNode.isTextual()) {
+                    analysis = objectMapper.readValue(analysisNode.textValue(), ArchitectureAnalysis.class);
+                } else {
+                    analysis = objectMapper.treeToValue(analysisNode, ArchitectureAnalysis.class);
+                }
             }
         } catch (JsonProcessingException e) {
             log.error("Error deserializing architecture data", e);
