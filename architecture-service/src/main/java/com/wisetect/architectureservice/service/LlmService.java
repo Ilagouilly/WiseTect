@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -32,9 +33,10 @@ public class LlmService {
     @Value("${wisetect.llm.api-key}")
     private String llmApiKey;
 
+    @Autowired
     public LlmService(WebClient llmWebClient, ObjectMapper objectMapper) {
         this.llmWebClient = llmWebClient;
-        this.objectMapper = objectMapper;
+        this.objectMapper = new ObjectMapper(); // Initialize it here
     }
 
     public Mono<Map<String, Object>> generateArchitectureSuggestion(Map<String, Object> requirement) {
