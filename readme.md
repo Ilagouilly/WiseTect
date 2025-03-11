@@ -64,7 +64,7 @@ WiseTect is an interactive architecture assistant that helps users design the ar
    ./sonar.sh|bat
    ```
    
-4. Run with Docker Compose
+4. Run the project
    ```bash
    ./run.sh|bat
    ```
