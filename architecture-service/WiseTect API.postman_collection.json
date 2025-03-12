@@ -1,11 +1,188 @@
 {
 	"info": {
-		"_postman_id": "c8cd7209-dd01-41c5-ad27-fcaec0b74646",
+		"_postman_id": "efd0410a-a67c-48f6-b361-9e34b44f674a",
 		"name": "WiseTect API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8270572"
 	},
 	"item": [
+		{
+			"name": "Retrieve Requirements Questions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/requirements/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"requirements",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Questions by Category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/requirements/questions/category/PERFORMANCE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"requirements",
+						"questions",
+						"category",
+						"PERFORMANCE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Requirements",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"projectName\": \"Internal HR Tool\",\r\n    \"projectDescription\": \"Internal human resources management system\",\r\n    \"answers\": {\r\n        \"1\": \"0-100\",\r\n        \"2\": \"0-10GB\",\r\n        \"3\": \"No\",\r\n        \"4\": \"99.9%\",\r\n        \"5\": \"No\",\r\n        \"6\": \"Yes\",\r\n        \"7\": \"Yes\",\r\n        \"8\": [\"GDPR\"],\r\n        \"9\": \"SSO\",\r\n        \"10\": [\"Email Services\"],\r\n        \"11\": \"No\",\r\n        \"12\": [\"Web Application\"],\r\n        \"13\": \"No\",\r\n        \"14\": \"Yes\",\r\n        \"15\": \"Monthly\",\r\n        \"16\": [\"Authentication\", \"Authorization\"],\r\n        \"17\": \"Yes\",\r\n        \"18\": \"Medium\",\r\n        \"19\": \"No\",\r\n        \"20\": \"Yes\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/requirements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"requirements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Requirement by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/requirements/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"requirements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Requirement",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"projectName\": \"Updated HR Tool\",\n    \"projectDescription\": \"Updated human resources management system\",\n    \"answers\": {\n        \"1\": \"0-80\",\n        \"2\": \"0-10GB\",\n        \"3\": \"No\",\n        \"4\": \"99.9%\",\n        \"5\": \"Yes\",\n        \"6\": \"Yes\",\n        \"7\": \"Yes\",\n        \"8\": [\"GDPR\"],\n        \"9\": \"SSO\",\n        \"10\": [\"Email Services\"],\n        \"11\": \"No\",\n        \"12\": [\"Web Application\"],\n        \"13\": \"No\",\n        \"14\": \"Yes\",\n        \"15\": \"Monthly\",\n        \"16\": [\"Authentication\", \"Authorization\"],\n        \"17\": \"Yes\",\n        \"18\": \"Medium\",\n        \"19\": \"No\",\n        \"20\": \"Yes\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/requirements/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"requirements",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Requirement",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/requirements/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"requirements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Generate Architecture",
 			"request": {
@@ -115,73 +292,6 @@
 						"architecture",
 						"export",
 						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Retrieve Requirements Questions",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/requirements/questions",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"requirements",
-						"questions"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Submit Requirements",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"projectName\": \"Internal HR Tool\",\r\n    \"projectDescription\": \"Internal human resources management system\",\r\n    \"answers\": {\r\n        \"1\": \"0-100\",\r\n        \"2\": \"0-10GB\",\r\n        \"3\": \"No\",\r\n        \"4\": \"99.9%\",\r\n        \"5\": \"No\",\r\n        \"6\": \"Yes\",\r\n        \"7\": \"Yes\",\r\n        \"8\": [\"GDPR\"],\r\n        \"9\": \"SSO\",\r\n        \"10\": [\"Email Services\"],\r\n        \"11\": \"No\",\r\n        \"12\": [\"Web Application\"],\r\n        \"13\": \"No\",\r\n        \"14\": \"Yes\",\r\n        \"15\": \"Monthly\",\r\n        \"16\": [\"Authentication\", \"Authorization\"],\r\n        \"17\": \"Yes\",\r\n        \"18\": \"Medium\",\r\n        \"19\": \"No\",\r\n        \"20\": \"Yes\"\r\n    }\r\n}\r\n"
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/requirements",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"requirements"
 					]
 				}
 			},
