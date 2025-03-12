@@ -42,6 +42,8 @@ public class RequirementService {
     public Mono<UserRequirement> saveRequirements(String sessionId, RequirementSubmissionRequest request) {
         UserRequirement requirement = new UserRequirement();
         requirement.setUserId(sessionId);
+        requirement.setProjectName(request.getProjectName());
+        requirement.setProjectDescription(request.getProjectDescription());
         requirement.setAnswers(request.getAnswers());
         requirement.setCreatedAt(
                 java.time.LocalDateTime.ofInstant(java.time.Instant.now(), java.time.ZoneId.systemDefault()));
