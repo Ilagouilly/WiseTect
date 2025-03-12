@@ -123,4 +123,111 @@ public class LlmServiceTest {
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(Map.class)).thenReturn(Mono.just(mockResponse));
     }
+
+    @Test
+    void testProcessLlmResponse_InvalidJsonContent() {
+        // Prepare mock response with invalid JSON content
+        Map<String, Object> mockResponse = new HashMap<>();
+        List<Map<String, Object>> candidates = new ArrayList<>();
+        Map<String, Object> candidate = new HashMap<>();
+        Map<String, Object> content = new HashMap<>();
+        List<Map<String, Object>> parts = new ArrayList<>();
+        Map<String, Object> part = new HashMap<>();
+
+        part.put("text", "This is not valid JSON");
+        parts.add(part);
+        content.put("parts", parts);
+        candidate.put("content", content);
+        candidates.add(candidate);
+        mockResponse.put("candidates", candidates);
+
+        // Set up WebClient mock chain
+        setupWebClientMockChain(mockResponse);
+
+        // Execute test and verify error handling
+        Map<String, Object> requirement = createTestRequirementMap();
+        StepVerifier.create(llmService.generateArchitectureSuggestion(requirement))
+                .expectErrorMatches(throwable -> throwable instanceof RuntimeException &&
+                        throwable.getMessage().contains("Failed to process LLM response"))
+                .verify();
+    }
+
+    @Test
+    void testGenerateArchitectureSuggestion_ApiError() {
+        // Prepare test data
+        Map<String, Object> requirement = createTestRequirementMap();
+
+        // Set up WebClient mock to return an error
+        when(webClient.post()).thenReturn(requestBodyUriSpec);
+        when(requestBodyUriSpec.uri(any(Function.class))).thenReturn(requestBodySpec);
+        when(requestBodySpec.bodyValue(any())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+        when(responseSpec.bodyToMono(Map.class)).thenReturn(Mono.error(new RuntimeException("API Error")));
+
+        // Execute test and verify error handling
+        StepVerifier.create(llmService.generateArchitectureSuggestion(requirement))
+                .expectErrorMatches(throwable -> throwable instanceof RuntimeException &&
+                        throwable.getMessage().equals("API Error"))
+                .verify();
+    }
+
+    @Test
+    void testGenerateArchitectureSuggestion_ComplexRequirement() {
+        // Prepare a more complex test requirement
+        Map<String, Object> requirement = new HashMap<>();
+        requirement.put("projectName", "Enterprise CRM System");
+        requirement.put("description", "Build a scalable CRM system with multi-tenant support");
+        requirement.put("constraints", "Must support at least 10,000 concurrent users");
+        requirement.put("technologies", List.of("Java", "Spring Boot", "React", "PostgreSQL"));
+        requirement.put("securityRequirements", "SOC2 compliance required");
+
+        // Prepare mock response
+        Map<String, Object> mockResponse = createMockLlmResponse();
+
+        // Set up WebClient mock chain
+        setupWebClientMockChain(mockResponse);
+
+        // Execute test and verify results
+        StepVerifier.create(llmService.generateArchitectureSuggestion(requirement))
+                .assertNext(result -> {
+                    assertNotNull(result);
+                    assertTrue(result.containsKey("diagram"));
+                    assertTrue(result.containsKey("analysis"));
+                })
+                .verifyComplete();
+
+        verify(webClient).post();
+    }
+
+    @Test
+    void testProcessLlmResponse_MissingDiagramOrAnalysis() {
+        // Prepare mock response with incomplete JSON structure
+        Map<String, Object> mockResponse = new HashMap<>();
+        List<Map<String, Object>> candidates = new ArrayList<>();
+        Map<String, Object> candidate = new HashMap<>();
+        Map<String, Object> content = new HashMap<>();
+        List<Map<String, Object>> parts = new ArrayList<>();
+        Map<String, Object> part = new HashMap<>();
+
+        // JSON missing the analysis field
+        part.put("text", "{\"diagram\": {\"components\": []}}");
+        parts.add(part);
+        content.put("parts", parts);
+        candidate.put("content", content);
+        candidates.add(candidate);
+        mockResponse.put("candidates", candidates);
+
+        // Set up WebClient mock chain
+        setupWebClientMockChain(mockResponse);
+
+        // Execute test and verify results
+        Map<String, Object> requirement = createTestRequirementMap();
+        StepVerifier.create(llmService.generateArchitectureSuggestion(requirement))
+                .assertNext(result -> {
+                    assertNotNull(result);
+                    assertTrue(result.containsKey("diagram"));
+                    // Analysis will be null but should not cause an error
+                })
+                .verifyComplete();
+    }
 }
