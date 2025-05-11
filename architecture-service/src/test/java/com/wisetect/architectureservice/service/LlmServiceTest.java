@@ -22,6 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.wisetect.architectureservice.domain.model.UserRequirement;
+import com.wisetect.architectureservice.exception.LlmProcessingException;
 
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -147,8 +148,8 @@ public class LlmServiceTest {
         // Execute test and verify error handling
         Map<String, Object> requirement = createTestRequirementMap();
         StepVerifier.create(llmService.generateArchitectureSuggestion(requirement))
-                .expectErrorMatches(throwable -> throwable instanceof RuntimeException &&
-                        throwable.getMessage().contains("Failed to process LLM response"))
+                .expectErrorMatches(throwable -> throwable instanceof LlmProcessingException &&
+                        throwable.getMessage().contains("Invalid JSON format in LLM response"))
                 .verify();
     }
 
@@ -223,11 +224,8 @@ public class LlmServiceTest {
         // Execute test and verify results
         Map<String, Object> requirement = createTestRequirementMap();
         StepVerifier.create(llmService.generateArchitectureSuggestion(requirement))
-                .assertNext(result -> {
-                    assertNotNull(result);
-                    assertTrue(result.containsKey("diagram"));
-                    // Analysis will be null but should not cause an error
-                })
-                .verifyComplete();
+                .expectErrorMatches(throwable -> throwable instanceof LlmProcessingException &&
+                        throwable.getMessage().contains("Response missing required fields (diagram or analysis)"))
+                .verify();
     }
 }

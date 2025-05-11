@@ -18,6 +18,11 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * REST controller for managing architecture suggestions.
+ * Provides endpoints for generating, retrieving, updating, and exporting
+ * architecture suggestions.
+ */
 @RestController
 @RequestMapping("/api/architecture")
 @RequiredArgsConstructor
@@ -26,7 +31,11 @@ public class ArchitectureController {
     private final ArchitectureService architectureService;
 
     /**
-     * Generate architecture suggestion based on requirements
+     * Generate an architecture suggestion based on the given requirement ID.
+     *
+     * @param requirementId the ID of the requirement.
+     * @return a {@link Mono} containing the generated architecture suggestion or a
+     *         404 response if not found.
      */
     @PostMapping("/generate/{requirementId}")
     public Mono<ResponseEntity<ArchitectureSuggestionResponse>> generateArchitecture(@PathVariable Long requirementId) {
@@ -36,7 +45,11 @@ public class ArchitectureController {
     }
 
     /**
-     * Get the latest architecture suggestion for a requirement
+     * Retrieve the latest architecture suggestion for a given requirement ID.
+     *
+     * @param requirementId the ID of the requirement.
+     * @return a {@link Mono} containing the latest architecture suggestion or a 404
+     *         response if not found.
      */
     @GetMapping("/latest/{requirementId}")
     public Mono<ResponseEntity<ArchitectureSuggestionResponse>> getLatestArchitecture(
@@ -47,7 +60,10 @@ public class ArchitectureController {
     }
 
     /**
-     * Get all versions of architecture suggestions for a requirement
+     * Retrieve all versions of architecture suggestions for a given requirement ID.
+     *
+     * @param requirementId the ID of the requirement.
+     * @return a {@link Flux} containing all versions of architecture suggestions.
      */
     @GetMapping("/versions/{requirementId}")
     public Flux<ArchitectureSuggestionResponse> getArchitectureVersions(@PathVariable Long requirementId) {
@@ -55,7 +71,11 @@ public class ArchitectureController {
     }
 
     /**
-     * Get a specific architecture suggestion by ID
+     * Retrieve a specific architecture suggestion by its ID.
+     *
+     * @param id the ID of the architecture suggestion.
+     * @return a {@link Mono} containing the architecture suggestion or a 404
+     *         response if not found.
      */
     @GetMapping("/{id}")
     public Mono<ResponseEntity<ArchitectureSuggestionResponse>> getArchitectureById(@PathVariable Long id) {
@@ -65,18 +85,26 @@ public class ArchitectureController {
     }
 
     /**
-     * Update architecture based on user modifications
+     * Update an architecture suggestion based on user modifications.
+     *
+     * @param id      the ID of the architecture suggestion to update.
+     * @param request the update request containing the modified architecture
+     *                details.
+     * @return a {@link Mono} containing the updated architecture suggestion.
      */
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public Mono<ResponseEntity<ArchitectureSuggestionResponse>> updateArchitecture(@PathVariable Long id,
             @Valid @RequestBody ArchitectureUpdateRequest request) {
-
         return architectureService.updateArchitectureSuggestion(id, request)
                 .map(ResponseEntity::ok);
     }
 
     /**
-     * Export architecture as JSON
+     * Export an architecture suggestion as a JSON string.
+     *
+     * @param id the ID of the architecture suggestion to export.
+     * @return a {@link Mono} containing the exported JSON string or a 404 response
+     *         if not found.
      */
     @GetMapping("/export/{id}")
     public Mono<ResponseEntity<String>> exportArchitecture(@PathVariable Long id) {
